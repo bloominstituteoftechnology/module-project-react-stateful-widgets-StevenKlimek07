@@ -28,6 +28,8 @@ STEP 2:
 
   Replace the hard-coded 'true' with the variable that keeps track of whether spinner is on or not.
 
+  ... answer: i changed the true to spinnerOn from useState to initilize the spinner
+
 STEP 3:
   Use a ternary expression inside the text of the button, to render "Hide" or "Show" depending on the value of 'spinnerOn'.
 
@@ -37,22 +39,26 @@ STEP 4:
 */
 
 import React from 'react'; /* STEP 0 */
+import { useState } from 'react';
 
 export default function Spinner() {
 /* STEP 1 */
+const [spinnerOn, setSpinnerOn] = useState(true)
 
   const toggleSpinner = () => {
-  /* STEP 4 */
+  /* STEP 4 */  setSpinnerOn(!spinnerOn)
   };
+
+
 
   return (
     <div className='widget-spinner container'>
       <h2>Spinner</h2>
       {
-        true && <div id='spinner' className='spinner'>--+--</div> /* STEP 2 */
+        spinnerOn && <div id='spinner' className='spinner'>--+--</div> /* STEP 2 */
       }
       <button id='toggleSpinner' onClick={toggleSpinner}>
-        Hide Spinner {/* STEP 3 */}
+        {spinnerOn === true ? "Hide Spinner" : "Show Spinner"}{/* STEP 3 */} 
       </button>
     </div>
   );
